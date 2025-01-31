@@ -10,14 +10,14 @@ import zipfile
 import hmac
 
 # Configurazione della pagina
-st.set_page_config(page_title="Validazione e modellazione dati", layout="wide")
+st.set_page_config(page_title="Validazione e Modellazione Dati", layout="wide")
 
 def check_password():
     """Returns `True` if the user had the correct password."""
 
     def password_entered():
         """Checks whether a password entered by the user is correct."""
-        if hmac.compare_digest(st.session_state["password"], st.secrets["SECRET"]):
+        if hmac.compare_digest(st.session_state["password"], st.secrets["PW_SECRET"]):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Non memorizzare la password.
         else:
@@ -366,7 +366,7 @@ def crea_grafico_distribuzione_residente(lavorabili_data):
     fig = px.bar(
         x=list(conteggi_residente.keys()),
         y=list(conteggi_residente.values()),
-        labels={'x': 'Provincia e residente Città', 'y': 'Numero di record'},
+        labels={'x': 'Provincia e Residente Città', 'y': 'Numero di record'},
         title='Distribuzione dei record per Provincia e Residente_Citta',
         text=list(conteggi_residente.values()),
         color=list(conteggi_residente.keys()),
@@ -448,9 +448,6 @@ def crea_bottoni_download(lavorabili_data):
 
 # Funzione principale
 def main():
-    # Titolo della pagina
-    st.title("Validazione, modellazione e arricchimento")
-    
     # Carica il file
     uploaded_file = carica_file()
     if uploaded_file is not None:
@@ -479,7 +476,7 @@ def main():
             
             with st.spinner('Calcolo dell\'Età e del gruppo di appartenenza...'):
                 df_mappato = aggiungi_eta_e_gruppo(df_mappato)
-                st.header("Dataframe con età e gruppo di età")
+                st.header("Dataframe con Età e Gruppo di Età")
                 st.dataframe(df_mappato.head())
             
             with st.spinner('Validazione dei dati...'):
@@ -516,7 +513,15 @@ def main():
         else:
             st.error("Impossibile caricare il file. Per favore verifica il formato e riprova.")
     else:
-        st.info("Carica un file per iniziare.")
+        # Mostra le informazioni guidate quando nessun file è caricato
+        try:
+            with open("README.md", "r", encoding="utf-8") as f:
+                readme_content = f.read()
+            st.markdown(readme_content)
+        except FileNotFoundError:
+            st.error("README.md non trovato. Per favore assicurati che il file README.md sia presente nella directory dell'app.")
+        except Exception as e:
+            st.error(f"Errore nella lettura di README.md: {e}")
 
 if __name__ == "__main__":
     main()
