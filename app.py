@@ -10,7 +10,7 @@ import zipfile
 import hmac
 
 # Configurazione della pagina
-st.set_page_config(page_title="Validazione e Modellazione Dati", layout="wide")
+st.set_page_config(page_title="Validazione, Modellazione e Arricchimento Dati", layout="wide")
 
 def check_password():
     """Returns `True` if the user had the correct password."""
