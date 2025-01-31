@@ -1,10 +1,12 @@
 # Validazione, Modellazione e Arricchimento Dati
 
-"Validazione, Modellazione e Arricchimento Dati" è un'applicazione, costruita con Streamlit, progettata per semplificare la gestione e l'analisi delle liste utente esportate dalle sedi tramite un'interfaccia intuitiva.
+Questa applicazione, costruita in python con Streamlit, è progettata per semplificare la gestione e l'analisi delle liste utente esportate dalle sedi tramite un'interfaccia intuitiva.
 
 ## Accesso all'Applicazione
 
-L'applicazione è già ospitata e pronta all'uso. Per accedervi:
+L'applicazione è già ospitata e pronta all'uso.
+
+Per accedervi:
 
 1. **Visita l'URL dedicato**.
 2. **Inserisci la password**.
@@ -14,10 +16,17 @@ L'applicazione è già ospitata e pronta all'uso. Per accedervi:
 - **Caricamento File**: Importa file in formato CSV o Excel direttamente dalla barra laterale.
 - **Mappatura Campi**: Associa le colonne del tuo file ai campi richiesti (Nome, Cognome, Sesso, Data di Nascita, Città, Email).
 - **Analisi del DataFrame**: Visualizza un'anteprima dei dati e identifica eventuali problemi.
-- **Gestione dei Record Anomali**: Scarica i record senza email, con email non valide o duplicate.
-- **Formattazione e Modellazione**: Formatizza correttamente i campi Nome, Cognome, Città ed Email.
-- **Arricchimento dei Dati (Età)**: Aggiunge informazioni aggiuntive come età in numero intero e gruppo di età di appartenenza.
+- **Gestione dei Record Anomali**: Scarica i record senza email, con email non valide o duplicate (per la gestione manuale).
+- **Formattazione e Modellazione**: Formatta correttamente i campi Nome, Cognome, Città ed Email.
+- **Arricchimento dei Dati (Età)**: Aggiunge informazioni addizionali come età in numero intero e gruppo di età di appartenenza.
+  - *Minorenni: < 18*
+  - *Ragazzi: >= 18 e < 25*
+  - *Giovani adulti: >= 25 e < 40*
+  - *Adulti: >= 40 e < 60*
+  - *Senior: >=60*
 - **Arricchimento dei Dati (Località)**: Integra dati sulla località includendo provincia, regione e CAP utilizzando un database dei comuni italiani.
+  - *Per le località con CAP multilpli viene sempre applicato un solo CAP in quanto nei dati grezzi non c'è alcun dato utile per il calcolo specifico.
+    es. Genova è sempre 16121.*
 - **Segmentazione e Download**: Suddivide i dati in segmenti specifici e permette di scaricarli singolarmente o in un archivio ZIP.
 
 ## Utilizzo dell'Applicazione
@@ -41,11 +50,11 @@ L'applicazione è già ospitata e pronta all'uso. Per accedervi:
 
 ### 5. Arricchimento dei Dati (Età)
 
-- L'app calcolerà automaticamente l'età e assegnerà un gruppo di appartenenza in base a questa.
+- L'app calcolerà automaticamente l'età in numero intero e assegnerà un gruppo di appartenenza in base a questa.
 
 ### 6. Arricchimento dei Dati (Località)
 
-- Integra informazioni aggiuntive sulla località, come provincia, regione e CAP, utilizzando il database dei comuni italiani.
+- L'app integra informazioni aggiuntive sulla località, come provincia, regione e CAP, utilizzando il database dei comuni italiani.
 
 ### 7. Segmenta e Scarica i Dati
 
@@ -69,10 +78,12 @@ L'applicazione utilizza le seguenti librerie Python:
 ## Risoluzione dei Problemi
 
 - **Problemi con le colonne del DataFrame**:
+  
   - Assicurati che il file caricato contenga tutte le colonne necessarie (Nome, Cognome, Sesso, Data di Nascita, Città, Email).
   - Verifica che la mappatura delle colonne sia corretta nell'interfaccia di mappatura.
 
 - **Errori durante l'upload del file**:
+  
   - Controlla che il file sia in formato CSV o Excel e che non sia corrotto.
   - Verifica la presenza di eventuali errori di formattazione nel file.
 
