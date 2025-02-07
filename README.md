@@ -29,6 +29,21 @@ Per accedervi:
     es. Genova è sempre 16121.*
 - **Segmentazione e Download**: Suddivide i dati in segmenti specifici e permette di scaricarli singolarmente o in un archivio ZIP.
 
+## ## Sicurezza dei Dati
+
+La sicurezza e la privacy dei dati sono una priorità assoluta per questa applicazione. Per garantire la protezione delle informazioni caricate dagli utenti, vengono adottate le seguenti misure:
+
+- **Nessuna memorizzazione dei dati**: Tutti i file caricati dagli utenti vengono processati esclusivamente in memoria durante la sessione attiva.
+  Nessun dato viene salvato permanentemente su server, database o altri supporti di archiviazione.
+
+- **Eliminazione automatica**: Al termine della sessione o della chiusura dell'applicazione, tutti i dati elaborati vengono eliminati immediatamente dalla memoria.
+
+- **Nessun log dei risultati**: Gli output generati dall'applicazione, inclusi file elaborati, segmentati o arricchiti, non vengono memorizzati o registrati in alcun modo.
+
+- **Download sicuro**: Gli utenti devono scaricare i dati elaborati direttamente senza alcuna conservazione temporanea sul server.
+
+Queste misure assicurano che le informazioni sensibili rimangano al sicuro e sotto il completo controllo dell'utente utilizzatore, senza alcun rischio di archiviazione non autorizzata.
+
 ## Utilizzo dell'Applicazione
 
 ### 1. Accedi all'App
