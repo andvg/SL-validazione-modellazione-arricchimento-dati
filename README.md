@@ -29,7 +29,7 @@ Per accedervi:
     es. Genova è sempre 16121.*
 - **Segmentazione e Download**: Suddivide i dati in segmenti specifici e permette di scaricarli singolarmente o in un archivio ZIP.
 
-## ## Sicurezza dei Dati
+## Sicurezza dei Dati
 
 La sicurezza e la privacy dei dati sono una priorità assoluta per questa applicazione. Per garantire la protezione delle informazioni caricate dagli utenti, vengono adottate le seguenti misure:
 
