@@ -273,9 +273,22 @@ def crea_grafico_gestione_manuale(gestione_manuale):
     fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis_tickangle=-45)
     st.plotly_chart(fig, use_container_width=True)
 
+# Correzione degli accenti
+def normalize_accents(text):
+    if isinstance(text, str):
+        text = text.replace("a’", "à")
+        text = text.replace("e’", "è")
+        text = text.replace("i’", "ì")
+        text = text.replace("o’", "ò")
+        text = text.replace("u’", "ù")
+    return text
+
 # Funzione per mappare le informazioni dei comuni
 @st.cache_data
 def map_comune_info(lavorabili_data, comuni_db_data):
+    # Applica la normalizzazione degli accenti alla colonna 'Città'
+    lavorabili_data['Città'] = lavorabili_data['Città'].apply(normalize_accents)
+
     # Creazione mappe per provincia e regione
     lavorabili_data.loc[:, 'citta_lower'] = lavorabili_data['Città'].str.lower().str.strip()
     
